@@ -1,3 +1,15 @@
+body{
+    margin:0;
+    font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:#f8f8f5;
+    color:#1c1917
+}
+
+img{
+    display:block;
+    max-width:100%
+}
+
 [hidden],.hidden{display:none!important}
 
 button,a{
@@ -10,15 +22,39 @@ html{
 
 .image-fallback{
     position:relative;
-    background:#f5f5f4
+    background:#f5f5f4;
+    overflow:hidden
+}
+
+.image-fallback img{
+    width:100%;
+    height:12rem;
+    object-fit:cover
+}
+
+.line-clamp-2{
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden
 }
 
 div.image-fallback::after{
     position:absolute;
+    inset:auto 0 0 0;
+    padding:.5rem .75rem;
     content:attr(data-fallback);
     color:#78716c;
-    font-size:12px
+    font-size:12px;
+    background:linear-gradient(180deg,transparent,rgba(255,255,255,.85));
+    opacity:0
 }
+
+.image-fallback:hover::after,
+.image-fallback:focus-within::after{
+    opacity:1
+}
+
 @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{
         scroll-behavior:auto!important;
